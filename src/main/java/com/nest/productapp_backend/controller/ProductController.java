@@ -26,4 +26,9 @@ public class ProductController {
     {
         return "welcome product editing page";
     }
+    @GetMapping("/view")
+    public String ViewPage()
+    {
+        return "welcome product viewing page";
+    }
 }
