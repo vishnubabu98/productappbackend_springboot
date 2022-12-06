@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
     @Autowired
@@ -44,9 +46,10 @@ public class ProductController {
         return "welcome product editing page";
     }
     @GetMapping("/view")
-    public String ViewPage()
+    public List<Products> ViewPage()
+
     {
-        return "welcome product viewing page";
+        return(List<Products>)dao.findAll();
     }
     @PostMapping("/delete")
     public String DeletePage()
