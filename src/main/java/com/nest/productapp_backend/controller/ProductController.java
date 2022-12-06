@@ -1,6 +1,8 @@
 package com.nest.productapp_backend.controller;
 
+import com.nest.productapp_backend.dao.ProductDao;
 import com.nest.productapp_backend.model.Products;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProductController {
+    @Autowired
+    private ProductDao dao;
     @GetMapping("/")
     public String HomePage()
     {
@@ -26,6 +30,7 @@ public class ProductController {
         System.out.println(p.getPrice());
         System.out.println(p.getSellername());
         System.out.println(p.getDistributorname());
+        dao.save(p);
         return "product added successfully";
     }
     @PostMapping("/search")
